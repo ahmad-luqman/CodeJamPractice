@@ -1,0 +1,11 @@
+Dashboard - Qualification Round Africa 2010 - Google Code Jam
+https://code.google.com/codejam/contest/351101/dashboard#s=p0
+
+A line reader tool for C++ | Kinetic Programming
+http://thegeekrising.blogspot.com/2013/02/a-line-reader-tool-for-c.html
+
+Practice and Learn - Google Code Jam
+https://code.google.com/codejam/contests.html
+
+Line by line reading in C and C++? - Stack Overflow
+http://stackoverflow.com/questions/5597513/line-by-line-reading-in-c-and-c
