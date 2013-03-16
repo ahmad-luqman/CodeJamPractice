@@ -8,8 +8,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
-
-#include <iostream>
+#include <regex>
 
 using namespace std;
 
@@ -32,7 +31,7 @@ string GetCurrentDir()
 string GetFullInputfilePath()
 {
     string path = GetCurrentDir();
-    string filename = "\\input\\A-small-practice.in";
+    string filename =  "\\input\\A-large-practice.in"; //"\\input\\SimpleData.in";
     stringstream ss;
     ss << path << filename;
     string fullpath = ss.str();
@@ -91,8 +90,33 @@ int _tmain(int argc, _TCHAR* argv[])
     int L = firstLine[0];
     int D = firstLine[1];
     int N = firstLine[2];
+    vector<string> words;
 
+    //read D
+    for (int i = 0; i < D; i++)
+    {
+        vector<string> word = ReadLineString(ifs);
+        words.push_back(word[0]);
+    }
 
+    //N cases
+    for (int i = 0; i < N; i++)
+    {
+        int match = 0;
+        vector<string> patternVector = ReadLineString(ifs);
+        string pattern = patternVector[0];
+
+        replace(pattern.begin(), pattern.end(), '(', '[');
+        replace(pattern.begin(), pattern.end(), ')', ']');
+        regex e(pattern);
+
+        for(int j = 0; j < D; j++)
+        {
+            if(regex_match(words[j], e))
+                match++;
+        }
+        ofs << "Case #" << i + 1 << ": " << match << endl;
+    }
 
     return 0;
 }

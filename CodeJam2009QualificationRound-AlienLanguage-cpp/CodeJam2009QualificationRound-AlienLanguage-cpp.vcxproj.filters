@@ -43,5 +43,8 @@
     <None Include="input\A-small-practice.in">
       <Filter>input</Filter>
     </None>
+    <None Include="input\SimpleData.in">
+      <Filter>input</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -92,6 +92,7 @@
   <ItemGroup>
     <None Include="input\A-large-practice.in" />
     <None Include="input\A-small-practice.in" />
+    <None Include="input\SimpleData.in" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
