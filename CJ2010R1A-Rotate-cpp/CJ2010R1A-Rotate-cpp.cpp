@@ -97,20 +97,24 @@ int _tmain(int argc, _TCHAR* argv[])
     for (int t = 0; t < T; t++)
     {
         string output;
-        vector<int> KAndN = ReadLineValues<int>(ifs, 2);
-        int K = KAndN[0];
-        int N = KAndN[1];
+        vector<int> NAndK = ReadLineValues<int>(ifs, 2);
+        int N = NAndK[0];
+        int K = NAndK[1];
 
-        //vector<char, char> b; 
-        for (int i = 0; i < K; i++)//Read Board
+        vector<vector<char>> b(N, vector<char>(N)); 
+        for (int i = 0; i < N; i++)//Read Board
         {
             vector<string> v = ReadLineString(ifs);
             string row = v[0];
-            for (int j = 0; j < K; j++)//Read into b from the string
+            for (int j = 0; j < N; j++)//Read into b from the string
             {
-                //b[i][j] = row[j];
+                b[i][j] = row[j];
             }
         }
+
+        //Rotate operation
+
+        //Find if 
 
         ofs << "Case #" << t + 1 << ": " << output << endl;
     }
