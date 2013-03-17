@@ -94,6 +94,50 @@ void printBoard(vector<vector<char>> b)
     }
 }
 
+bool Won(vector<vector<char>> b, char w, int K)
+{
+    for (int i = 0; i < b.size(); i++)
+    {
+        for (int j = 0; j < b.size(); j++)
+        {
+            //Now look for four possible wins but keeping in mind of the loop pattern
+            //Also don't look for patterns if k makes the looking out of range of array
+            if (b[i][j] == w)
+            {
+                if(j+K < b.size()-1)
+                {
+                    bool otherFound = false;
+                    for(int x=j; x<j+K+1; x++)
+                    {
+                        if(b[i][x]!=w)
+                        {
+                            otherFound = true;
+                            break;
+                        }
+                    }
+                    if(otherFound == false)
+                        return true;
+                }
+                if(i+K < b.size()-1)
+                {
+                    bool otherFound = false;
+                    for(int x=i; x<i+K+1; x++)
+                    {
+                        if(b[x][j]!=w)
+                        {
+                            otherFound = true;
+                            break;
+                        }
+                    }
+                    if(otherFound == false)
+                        return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
     ifstream ifs(GetFullInputfilePath());
@@ -143,7 +187,24 @@ int _tmain(int argc, _TCHAR* argv[])
 
         cout<<endl;
         printBoard(b);
-        //Find if 
+        //Find Who won!!
+        bool R = Won(b,'R', K);
+        bool B = Won(b,'R', K);
+        if(R == B)
+        {
+            if (R==false)
+                output = "Neither";
+            else
+                output = "Both";
+        }
+        else
+        {
+            if (R==false)
+                output = "Blue";
+            else
+                output = "Red";
+        }
+
 
         ofs << "Case #" << t + 1 << ": " << output << endl;
     }
