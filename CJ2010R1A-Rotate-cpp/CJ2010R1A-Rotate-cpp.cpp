@@ -82,6 +82,17 @@ vector<string> ReadLineString(ifstream &ifs)
     return v;
 }
 
+void printBoard(vector<vector<char>> b)
+{
+    for (size_t i = 0; i < b.size(); i++)
+    {
+        for (size_t j = 0; j < b.size(); j++)
+        {
+            cout<< b[i][j] << " ";
+        }
+        cout<<endl;
+    }
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -111,9 +122,27 @@ int _tmain(int argc, _TCHAR* argv[])
                 b[i][j] = row[j];
             }
         }
+        printBoard(b);
 
-        //Rotate operation
+        bool nonDotRow = false;
+        //Rotate & gravity operation
+        for (int i = 0; i < N; i++)//all rows
+        {
+            int head;
+            int tail = N-1;
+            for (int j = N - 1; j >= 0 ; j--)
+            {
+                head = j;
+                if (b[i][head] != '.')
+                {
+                    swap(b[i][head], b[i][tail]);
+                    tail--; 
+                }
+            }
+        }
 
+        cout<<endl;
+        printBoard(b);
         //Find if 
 
         ofs << "Case #" << t + 1 << ": " << output << endl;
