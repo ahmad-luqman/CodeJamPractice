@@ -33,9 +33,9 @@ string GetCurrentDir()
 string GetFullInputfilePath()
 {
     string path = GetCurrentDir();
-    //string filename = "\\input\\A-large-practice.in";
+    string filename = "\\input\\A-large-practice.in";
     //string filename = "\\input\\A-small-practice.in";
-    string filename = "\\input\\SampleInput.in";
+    //string filename = "\\input\\SampleInput.in";
     stringstream ss;
     ss << path << filename;
     string fullpath = ss.str();
@@ -94,7 +94,7 @@ void printBoard(vector<vector<char>> b)
     }
 }
 
-bool Won(vector<vector<char>> b, char w, int K)
+bool Won(vector<vector<char>> b, char w, int K, int t)//pass t for conditional debugging
 {
     for (int i = 0; i < b.size(); i++)
     {
@@ -102,35 +102,72 @@ bool Won(vector<vector<char>> b, char w, int K)
         {
             //Now look for four possible wins but keeping in mind of the loop pattern
             //Also don't look for patterns if k makes the looking out of range of array
-            if (b[i][j] == w)
+            char c = b[i][j];
+            if (c == w)
             {
-                if(j+K < b.size()-1)
+                //Horizontal Case && Diagonal Right-Down case
+                if(j+K-1 < b.size())
                 {
-                    bool otherFound = false;
-                    for(int x=j; x<j+K+1; x++)
+                    //Horizontal Case
+                    bool otherChFound = false;
+                    for(int x=j; x<j+K; x++)
                     {
                         if(b[i][x]!=w)
                         {
-                            otherFound = true;
+                            otherChFound = true;
                             break;
                         }
                     }
-                    if(otherFound == false)
+                    if(otherChFound == false)
                         return true;
+
+                    //Diagonal Right-Down case
+                    if(i+K-1 < b.size())
+                    {
+                        otherChFound = false;
+                        for(int x=0;x<K;x++)
+                        {
+                            if(b[i+x][j+x]!=w)
+                            {
+                                otherChFound = true;
+                                break;
+                            }
+                        }
+                        if(otherChFound == false)
+                            return true;
+                    }
                 }
-                if(i+K < b.size()-1)
+                //Vertical Case && Diagonal Left-Down case
+                if(i+K-1 < b.size())
                 {
-                    bool otherFound = false;
-                    for(int x=i; x<i+K+1; x++)
+                    //Vertical Case
+                    bool otherChFound = false;
+                    for(int x=i; x<i+K; x++)
                     {
                         if(b[x][j]!=w)
                         {
-                            otherFound = true;
+                            otherChFound = true;
                             break;
                         }
                     }
-                    if(otherFound == false)
+                    if(otherChFound == false)
                         return true;
+
+                    //Diagonal Left-Down case
+                    if(j-K+1 >= 0)
+                    {
+                        otherChFound = false;
+                        for(int x=0; x<K; x++)
+                        {
+                            if(b[x+i][j-x]!=w)
+                            {
+                                otherChFound = true;
+                                break;
+                            }
+                        }
+                        if(otherChFound == false)
+                            return true;
+                    }
                 }
             }
         }
@@ -188,8 +225,8 @@ int _tmain(int argc, _TCHAR* argv[])
         cout<<endl;
         printBoard(b);
         //Find Who won!!
-        bool R = Won(b,'R', K);
-        bool B = Won(b,'R', K);
+        bool R = Won(b,'R', K, t);
+        bool B = Won(b,'B', K, t);
         if(R == B)
         {
             if (R==false)
