@@ -159,6 +159,16 @@ int _tmain(int argc, _TCHAR* argv[])
             output += pow<long long, long long>((long long)base,(long long)i) * (long long)v;
             i++;
         });
+        //int i = 0;
+        //long long pow = 1;
+        //for_each(VinAlien.rbegin(), VinAlien.rend(), [&](long long v)
+        //{
+        //    /*long long powAnswer = pow<long long, long long>(base, i);
+        //    output += powAnswer * v;*/
+        //    output = pow + (long long)v;
+        //    pow *= base;
+        //    i++;
+        //});
         ofs << "Case #" << t + 1 << ": " << output << endl;
     }
     return 0;
