@@ -33,9 +33,9 @@ string GetCurrentDir()
 string GetFullInputfilePath()
 {
     string path = GetCurrentDir();
-    //string filename = "\\input\\A-large-practice.in";
+    string filename = "\\input\\A-large-practice.in";
     //string filename = "\\input\\A-small-practice.in";
-    string filename = "\\input\\SampleInput.in";
+    //string filename = "\\input\\SampleInput.in";
     stringstream ss;
     ss << path << filename;
     string fullpath = ss.str();
@@ -96,7 +96,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
     for (int t = 0; t < T; t++)
     {
-        int output;
+        long long output = 0;
         vector<string> inputLine = ReadLineString(ifs);
         string input = inputLine[0];
 
@@ -114,6 +114,8 @@ int _tmain(int argc, _TCHAR* argv[])
                 base--;
             lastChar = sortedString[i];
         }
+        if (base==1)
+            base=2;
 
         map<char, int> alienToNumberMap;
 
@@ -129,22 +131,34 @@ int _tmain(int argc, _TCHAR* argv[])
             }
             else if(secondUnique)//Second unique element be 0 if not 1
             {
-                if(input[i]!=1)
+                if(input[i]!=input[0])
                 {
                     VinAlien.push_back(0);
-                    alienToNumberMap[i] = 0;
-                    secondUnique = true;
+                    alienToNumberMap[input[i]] = 0;
+                    secondUnique = false;
                 }
                 else
                     VinAlien.push_back(1);
             }
             else
             {
-
+                if(alienToNumberMap.count(input[i])>0)
+                    VinAlien.push_back(alienToNumberMap[input[i]]);
+                else
+                {
+                    VinAlien.push_back(alphabetNumber);
+                    alienToNumberMap[input[i]] = alphabetNumber;
+                    alphabetNumber++;
+                }
             }
         }
-
-        output = 0;
+        //Convert to Number
+        int i = 0;
+        for_each(VinAlien.rbegin(), VinAlien.rend(), [&](long long v)
+        {
+            output += pow<long long, long long>((long long)base,(long long)i) * (long long)v;
+            i++;
+        });
         ofs << "Case #" << t + 1 << ": " << output << endl;
     }
     return 0;
