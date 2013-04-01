@@ -96,8 +96,55 @@ int _tmain(int argc, _TCHAR* argv[])
 
     for (int t = 0; t < T; t++)
     {
-        int output = 0;
+        int output;
+        vector<string> inputLine = ReadLineString(ifs);
+        string input = inputLine[0];
 
+        int length = input.length();
+
+        int base = length;
+
+        string sortedString = input;
+        sort(sortedString.begin(), sortedString.end());
+
+        char lastChar;
+        for (int i = 0; i < length; i++)
+        {
+            if(i>0 && lastChar == sortedString[i])
+                base--;
+            lastChar = sortedString[i];
+        }
+
+        map<char, int> alienToNumberMap;
+
+        vector<int> VinAlien;
+        bool secondUnique = true;
+        int alphabetNumber = 2; //Initialize with 2
+        for (int i = 0; i < length; i++)
+        {
+            if (i==0)//First element be 1
+            {
+                VinAlien.push_back(1);
+                alienToNumberMap[input[i]] = 1;
+            }
+            else if(secondUnique)//Second unique element be 0 if not 1
+            {
+                if(input[i]!=1)
+                {
+                    VinAlien.push_back(0);
+                    alienToNumberMap[i] = 0;
+                    secondUnique = true;
+                }
+                else
+                    VinAlien.push_back(1);
+            }
+            else
+            {
+
+            }
+        }
+
+        output = 0;
         ofs << "Case #" << t + 1 << ": " << output << endl;
     }
     return 0;
