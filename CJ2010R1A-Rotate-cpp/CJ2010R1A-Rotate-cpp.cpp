@@ -203,9 +203,8 @@ int _tmain(int argc, _TCHAR* argv[])
                 b[i][j] = row[j];
             }
         }
-        printBoard(b);
-
-        bool nonDotRow = false;
+        //cout << endl << "Case #" << t + 1 ;
+        //printBoard(b);
         //Rotate & gravity operation
         for (int i = 0; i < N; i++)//all rows
         {
@@ -222,8 +221,9 @@ int _tmain(int argc, _TCHAR* argv[])
             }
         }
 
-        cout<<endl;
-        printBoard(b);
+        //cout<<endl;
+        //printBoard(b);
+        //cout<<"==================================================================================================================================================================="<<endl;
         //Find Who won!!
         bool R = Won(b,'R', K, t);
         bool B = Won(b,'B', K, t);
