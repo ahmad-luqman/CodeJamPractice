@@ -96,9 +96,9 @@ void printBoard(vector<vector<char>> b)
 
 bool Won(vector<vector<char>> b, char w, int K, int t)//pass t for conditional debugging
 {
-    for (int i = 0; i < b.size(); i++)
+    for (int i = 0; i < (int)b.size(); i++)
     {
-        for (int j = 0; j < b.size(); j++)
+        for (int j = 0; j < (int)b.size(); j++)
         {
             //Now look for four possible wins but keeping in mind of the loop pattern
             //Also don't look for patterns if k makes the looking out of range of array
@@ -106,7 +106,7 @@ bool Won(vector<vector<char>> b, char w, int K, int t)//pass t for conditional d
             if (c == w)
             {
                 //Horizontal Case && Diagonal Right-Down case
-                if(j+K-1 < b.size())
+                if(j+K-1 < (int)b.size())
                 {
                     //Horizontal Case
                     bool otherChFound = false;
@@ -118,11 +118,11 @@ bool Won(vector<vector<char>> b, char w, int K, int t)//pass t for conditional d
                             break;
                         }
                     }
-                    if(otherChFound == false)
+                    if(!otherChFound)
                         return true;
 
                     //Diagonal Right-Down case
-                    if(i+K-1 < b.size())
+                    if(i+K-1 < (int)b.size())
                     {
                         otherChFound = false;
                         for(int x=0;x<K;x++)
@@ -133,12 +133,12 @@ bool Won(vector<vector<char>> b, char w, int K, int t)//pass t for conditional d
                                 break;
                             }
                         }
-                        if(otherChFound == false)
+                        if(!otherChFound)
                             return true;
                     }
                 }
                 //Vertical Case && Diagonal Left-Down case
-                if(i+K-1 < b.size())
+                if(i+K-1 < (int)b.size())
                 {
                     //Vertical Case
                     bool otherChFound = false;
@@ -150,7 +150,7 @@ bool Won(vector<vector<char>> b, char w, int K, int t)//pass t for conditional d
                             break;
                         }
                     }
-                    if(otherChFound == false)
+                    if(!otherChFound)
                         return true;
 
                     //Diagonal Left-Down case
@@ -165,7 +165,7 @@ bool Won(vector<vector<char>> b, char w, int K, int t)//pass t for conditional d
                                 break;
                             }
                         }
-                        if(otherChFound == false)
+                        if(!otherChFound)
                             return true;
                     }
                 }
@@ -228,20 +228,9 @@ int _tmain(int argc, _TCHAR* argv[])
         bool R = Won(b,'R', K, t);
         bool B = Won(b,'B', K, t);
         if(R == B)
-        {
-            if (R==false)
-                output = "Neither";
-            else
-                output = "Both";
-        }
+            (!R) ? output = "Neither": output = "Both";
         else
-        {
-            if (R==false)
-                output = "Blue";
-            else
-                output = "Red";
-        }
-
+            (!R) ? output = "Blue": output = "Red";
 
         ofs << "Case #" << t + 1 << ": " << output << endl;
     }
