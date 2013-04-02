@@ -11,3 +11,4 @@ Google Code Jam competitions problems solutions:
 * Code Jam 2010 Round 1B File Fix It in VS2012 C++ project
 * Code Jam 2010 Round 1A Rotate in VS2012 C++ project
 * Code Jam 2009 Round 1C All Your Base in VS2012 C++ project
+* Code Jam 2012 Qualification Round Speaking In Tongues in VS2012 C++ project
