@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <map>
+#include <numeric>
 
 #include <iostream>
 
@@ -91,11 +92,49 @@ int main(int argc, char* argv[])
 
     //T Cases
     int T = ReadLineValue<int>(ifs);
+    map<char, char> dict;
+    dict[' '] = ' ';
+    dict['a'] = 'y';
+    dict['b'] = 'h';
+    dict['c'] = 'e';
+    dict['d'] = 's';
+    dict['e'] = 'o';
+    dict['f'] = 'c';
+    dict['g'] = 'v';
+    dict['h'] = 'x';
+    dict['i'] = 'd';
+    dict['j'] = 'u';
+    dict['k'] = 'i';
+    dict['l'] = 'g';
+    dict['m'] = 'l';
+    dict['n'] = 'b';
+    dict['o'] = 'k';
+    dict['p'] = 'r';
+    dict['q'] = 'z';
+    dict['r'] = 't';
+    dict['s'] = 'n';
+    dict['t'] = 'w';
+    dict['u'] = 'j';
+    dict['v'] = 'p';
+    dict['w'] = 'f';
+    dict['x'] = 'm';
+    dict['y'] = 'a';
+    dict['z'] = 'q';
 
     for (int t = 0; t < T; t++)
     {
-        ull output = 0;
+        string output = "";
+        vector<string> input = ReadLineString(ifs);
+        string s;
+        for_each(input.begin(), input.end(), [&](string i)
+        {
+            s = s + " " + i;
+        });
 
+        for (int i = 0; i < s.length(); i++)
+        {
+            output += dict[s[i]];
+        }
 
         ofs << "Case #" << t + 1 << ": " << output << endl;
     }
