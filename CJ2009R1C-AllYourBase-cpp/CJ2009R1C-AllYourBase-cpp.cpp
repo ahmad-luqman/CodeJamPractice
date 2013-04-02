@@ -14,6 +14,8 @@
 
 using namespace std;
 
+#define ull unsigned long long
+
 string GetCurrentDir()
 {
     string str;
@@ -96,7 +98,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
     for (int t = 0; t < T; t++)
     {
-        long long output = 0;
+        ull output = 0;
         vector<string> inputLine = ReadLineString(ifs);
         string input = inputLine[0];
 
@@ -154,21 +156,13 @@ int _tmain(int argc, _TCHAR* argv[])
         }
         //Convert to Number
         int i = 0;
-        for_each(VinAlien.rbegin(), VinAlien.rend(), [&](long long v)
+        ull pow = 1;
+        for_each(VinAlien.rbegin(), VinAlien.rend(), [&](ull v)
         {
-            output += pow<long long, long long>((long long)base,(long long)i) * (long long)v;
+            output = output + v * pow;
+            pow *= base;
             i++;
         });
-        //int i = 0;
-        //long long pow = 1;
-        //for_each(VinAlien.rbegin(), VinAlien.rend(), [&](long long v)
-        //{
-        //    /*long long powAnswer = pow<long long, long long>(base, i);
-        //    output += powAnswer * v;*/
-        //    output = pow + (long long)v;
-        //    pow *= base;
-        //    i++;
-        //});
         ofs << "Case #" << t + 1 << ": " << output << endl;
     }
     return 0;
