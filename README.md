@@ -13,5 +13,5 @@ Google Code Jam competitions problems solutions:
 * Code Jam 2009 Round 1C [All Your Base](http://code.google.com/codejam/contest/189252/dashboard#s=p0) in VS2012 C++ [project](CJ2009R1C-AllYourBase-cpp)
 * Code Jam 2012 Qualification Round [Speaking In Tongues](https://code.google.com/codejam/contest/1460488/dashboard#s=p0) in VS2012 C++ [project](CJ2012QR-SpeakingInTongues-cpp)
 * Code Jam 2012 Qualification Round [Speaking In Tongues](https://code.google.com/codejam/contest/1460488/dashboard#s=p0) in C# [project](CJ2012QR-SpeakingInTongues-cs)
-* Code Jam 2012 Qualification Round [Dancing With the Googlers](https://code.google.com/codejam/contest/1460488/dashboard#s=p1) in C# [project](CJ2012QR-DancingWithTheGooglers-cs)
+* Code Jam 2012 Qualification Round [Dancing With the Googlers](https://code.google.com/codejam/contest/1460488/dashboard#s=p1) in C# [project](CJ2012QR-DancingWithTheGooglers-cs) (WIP)
 
