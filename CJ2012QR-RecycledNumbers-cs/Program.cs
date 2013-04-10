@@ -7,40 +7,37 @@ using System.Threading.Tasks;
 
 namespace CJ2012QR_RecycledNumbers_cs
 {
-    class Program
+    class App
     {
-        class App
+        public void Run()
         {
-            public void Run()
+            string input = Console.ReadLine();
+            int T = Convert.ToInt32(input);
+
+            for (int t = 0; t < T; t++)
             {
-                string input = Console.ReadLine();
-                int T = Convert.ToInt32(input);
+                var str = Console.ReadLine();
 
-                for (int t = 0; t < T; t++)
-                {
-                    var str = Console.ReadLine();
-
-                    var output = "Case #{0}: ";// +y;
-                    Console.WriteLine(output, t + 1);
-                }
+                var output = "Case #{0}: ";// +y;
+                Console.WriteLine(output, t + 1);
             }
         }
+    }
 
-        class Program
+    class Program
+    {
+        static void Main(string[] args)
         {
-            static void Main(string[] args)
+            var app = new App();
+
+            using (StreamWriter writer = new StreamWriter("C:\\out.txt"))
+            using (StreamReader reader = new StreamReader(@"B-large-practice.in"))
             {
-                var app = new App();
-
-                //using (StreamWriter writer = new StreamWriter("C:\\out.txt"))
-                //using (StreamReader reader = new StreamReader(@"B-large-practice.in"))
-                {
-                    //Console.SetOut(writer);
-                    //Console.SetIn(reader);
-                    app.Run();
-                }
-
+                Console.SetOut(writer);
+                Console.SetIn(reader);
+                app.Run();
             }
+
         }
     }
 }
