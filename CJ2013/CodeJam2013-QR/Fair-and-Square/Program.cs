@@ -64,7 +64,10 @@ namespace Fair_and_Square
                 //    if(dict.ContainsKey(i))
                 //        count++;
                 //}
-                count = fairAndSquare.Count(n => n >= (int)Math.Sqrt(A) && n <= Math.Sqrt(B));
+                long sqrtA = (long)Math.Sqrt(A);
+                long sqrtB = (long)Math.Sqrt(B);
+                //count = fairAndSquare.Count(n => n >= sqrtA && n <= sqrtB);
+                count = dict.Count(n => n.Value >= A && n.Value <= B);
 
 
                 string y = count.ToString();
@@ -82,7 +85,7 @@ namespace Fair_and_Square
             var app = new App();
 
             using (StreamWriter writer = new StreamWriter("out.txt"))
-            using (StreamReader reader = new StreamReader(@"C:\Users\aluqman\Downloads\C-small-practice.in"))
+            using (StreamReader reader = new StreamReader(@"C:\Users\aluqman\Downloads\C-large-practice-2.in"))
             {
                 Console.SetOut(writer);
                 Console.SetIn(reader);
